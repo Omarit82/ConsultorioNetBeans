@@ -2,15 +2,14 @@ package objetos;
 
 import java.time.LocalDate;
 
-//TURNOS
 public class Turno {
-    //ATRIBUTOS PRIVADOS
+   //ATRIBUTOS PRIVADOS
     private Puesto puestoAsignado;
     private Paciente paciente;
     private Profesional profesional;
     private LocalDate fecha;
     private Hora hora;
-    private boolean asistencia;
+    private int asistencia;
     private int turnoId;
     private static int contador=1;
 
@@ -21,9 +20,12 @@ public class Turno {
         this.profesional = profesional;
         this.fecha = fecha;
         this.hora = hora;
-        this.asistencia = false;
+        this.asistencia = 0;
         this.turnoId = contador;
         this.contador++;
+        paciente.agendarNuevoTurno(this);
+        profesional.agendarNuevoTurno(this);
+        puestoAsignado.agendarNuevoTurno(this);
     }
     //Getters & Setters
 
@@ -69,34 +71,62 @@ public class Turno {
     public LocalDate getFecha() {
         return fecha;
     }
-
+    /**
+     * Retorna una hora 
+     * @return Hora
+     */
     public Hora getHora() {
         return hora;
     }
-
+    /**
+     * Setea una nueva hora
+     * @param hora
+     */
     public void setHora(Hora hora) {
         this.hora = hora;
     }
-    
-
+    /**
+     * Retorna el id de turno representado con un entero
+     * @return entero
+     */
     public int getTurnoId() {
         return turnoId;
     }
-
+    /**
+     * Setea el numero de id de turno
+     * @param turnoId
+     */
     public void setTurnoId(int turnoId) {
         this.turnoId = turnoId;
     }
-    
-    public boolean isAsistencia() {
+    /**
+     * Retorna un boolean con la asistencia
+     * @return boolean
+     */
+    public int getAsistencia() {
         return asistencia;
     }
-
-    public void setAsistencia(boolean asistencia) {
+    /**
+     * Setea la asistencia
+     * @param asistencia
+     */
+    public void setAsistencia(int asistencia) {
         this.asistencia = asistencia;
     }
-
+    /**
+     * Ejecuta un metodo que si el paciente asistio a un turno, resta de las sesiones remanentes
+     */
     public void pacienteAsistio(){
-        paciente.setSesionesRemanentes(paciente.getSesionesRemanentes()-1);
+        if(!paciente.isCronico()){
+            paciente.setSesionesRemanentes(paciente.getSesionesRemanentes()-1);
+        }
+    }
+
+    /**
+     * Al ejecutarse el turno, el profesional cobra por este.
+     */
+    public void profesionalCobra(){
+        profesional.trabajarTurno();
     }
 
     @Override

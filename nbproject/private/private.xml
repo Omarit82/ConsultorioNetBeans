@@ -3,12 +3,16 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/PacientesMenu.java</file>
-            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/ProfesionalMenu.java</file>
-            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/TurnosMenu.java</file>
-            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/PanelMenu.java</file>
-            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/ListPacientes.java</file>
-            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/objetos/Institucion.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/pacientes/PacientesMenu.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/PanelFondo.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/pacientes/ListPacientes.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/Institucion/InstitucionMenu.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/pacientes/buscarPaciente.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/Institucion/Puestos.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/profesionales/ViewProfesional.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/profesionales/BuscarProfesional.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/profesionales/ProfesionalMenu.java</file>
+            <file>file:/home/omarit/NetBeansProjects/ConsultorioNetBeans/src/view/profesionales/newProfesional.java</file>
         </group>
     </open-files>
 </project-private>

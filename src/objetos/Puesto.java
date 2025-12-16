@@ -1,7 +1,6 @@
 package objetos;
 
 import java.time.LocalDate;
-import utils.Arreglo;
 
 public class Puesto {
     //ATRIBUTOS
@@ -19,21 +18,40 @@ public class Puesto {
     }
 
     //Getters & Setters
+    /**
+     * Retorna el nombre del puesto
+     * @return
+     */
     public String getNombre() {
         return nombre;
     }
+    /**
+     * Setea el nombre del puesto
+     * @param nombre
+     */
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+    /**
+     * Retorna el numero unico de puesto
+     * @return
+     */
     public int getPuestoNumero() {
         return puestoNumero;
     }
-
+    /**
+     * Setea el numero del puesto.
+     * @param puestoNumero
+     */
     public void setPuestoNumero(int puestoNumero) {
         this.puestoNumero = puestoNumero;
     }
-
+    /**
+     * Valida que no este ocupado en la fecha y hora solicitadas
+     * @param fecha
+     * @param hora
+     * @return boolean
+     */
     public boolean validacion(LocalDate fecha, Hora hora){
         if(turnos.length == 0){
             return true;
@@ -46,18 +64,40 @@ public class Puesto {
         return true;
     }
     //AGENDAR NUEVO TURNO
+    /**
+     * Agrega un nuevo turno al arreglo de turnos
+     * @param Turno
+     */
     public void agendarNuevoTurno(Turno tt){
-        turnos = Arreglo.agregarTurno(turnos, tt);
+        Turno [] nuevo = new Turno[turnos.length+1];
+        for(int i=0;i<turnos.length;i++){
+            nuevo[i]=turnos[i];
+        }
+        nuevo[nuevo.length-1] = tt;
+        turnos = nuevo;
     }
+  
+    /**
+     * Retorna un String con la informacion de los turnos
+     * @return String
+     */
     public String showTurnos(){
-        String res ="";
-        if(turnos.length==0){
-            res+="Sin turnos al momento";
+         if(turnos.length==0){
+            String res="Sin turnos al momento";
             return res;
         }
+        String ausentes="\nAusentes:";
+        String presentes="\nPresentes:";
+        String futuros="\nFuturos:";
         for(int i=0;i<turnos.length;i++){
-            res += turnos[i]+"\n";
+            if(turnos[i].getAsistencia()>0){
+                presentes+="\n"+turnos[i].getTurnoId()+" - "+turnos[i];
+            }else if(turnos[i].getAsistencia()<0){
+                ausentes+="\n"+turnos[i].getTurnoId()+" - "+turnos[i];
+            }else{
+                futuros+="\n"+turnos[i].getTurnoId()+" - "+turnos[i];
+            }
         }
-        return res;
+        return ausentes+"\n---------------------------------"+presentes+"\n---------------------------------"+futuros;
     }
 }

@@ -1,5 +1,5 @@
 package objetos;
 
 public enum Especialidad {
-    RPG,ATM,DRENAJE_LINFATICO;
+    RPG,ATM,DRENAJE_LINFATICO,OSTEOPATIA;
 }

@@ -1,10 +1,14 @@
 package view;
 
 
+import view.profesionales.ProfesionalMenu;
+import view.pacientes.PacientesMenu;
 import java.awt.Color;
 import java.awt.Window;
 import javax.swing.SwingUtilities;
 import objetos.Institucion;
+import view.Institucion.InstitucionMenu;
+import view.turnos.TurnosMenu;
 
 public class PanelMenu extends javax.swing.JPanel {
     
@@ -30,9 +34,10 @@ public class PanelMenu extends javax.swing.JPanel {
 
         pacientes = new javax.swing.JButton();
         javax.swing.JButton salir = new javax.swing.JButton();
-        pacientes1 = new javax.swing.JButton();
-        pacientes2 = new javax.swing.JButton();
+        profesionales = new javax.swing.JButton();
+        turnos = new javax.swing.JButton();
         logoContainer = new LogoPanel("/images/Logo.png");
+        finanzas = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -54,29 +59,29 @@ public class PanelMenu extends javax.swing.JPanel {
         salir.setText("Salir");
         salir.addActionListener(this::salirActionPerformed);
 
-        pacientes1.setBackground(new java.awt.Color(203, 0, 0));
-        pacientes1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        pacientes1.setForeground(new java.awt.Color(255, 255, 255));
-        pacientes1.setText("Profesionales");
-        pacientes1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        pacientes1.addMouseListener(new java.awt.event.MouseAdapter() {
+        profesionales.setBackground(new java.awt.Color(203, 0, 0));
+        profesionales.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        profesionales.setForeground(new java.awt.Color(255, 255, 255));
+        profesionales.setText("Profesionales");
+        profesionales.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        profesionales.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                pacientes1MousePressed(evt);
+                profesionalesMousePressed(evt);
             }
         });
-        pacientes1.addActionListener(this::pacientes1ActionPerformed);
+        profesionales.addActionListener(this::profesionalesActionPerformed);
 
-        pacientes2.setBackground(new java.awt.Color(203, 0, 0));
-        pacientes2.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        pacientes2.setForeground(new java.awt.Color(255, 255, 255));
-        pacientes2.setText("Turnos");
-        pacientes2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        pacientes2.addMouseListener(new java.awt.event.MouseAdapter() {
+        turnos.setBackground(new java.awt.Color(203, 0, 0));
+        turnos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        turnos.setForeground(new java.awt.Color(255, 255, 255));
+        turnos.setText("Turnos");
+        turnos.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        turnos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                pacientes2MousePressed(evt);
+                turnosMousePressed(evt);
             }
         });
-        pacientes2.addActionListener(this::pacientes2ActionPerformed);
+        turnos.addActionListener(this::turnosActionPerformed);
 
         javax.swing.GroupLayout logoContainerLayout = new javax.swing.GroupLayout(logoContainer);
         logoContainer.setLayout(logoContainerLayout);
@@ -88,6 +93,18 @@ public class PanelMenu extends javax.swing.JPanel {
             logoContainerLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 121, Short.MAX_VALUE)
         );
+
+        finanzas.setBackground(new java.awt.Color(203, 0, 0));
+        finanzas.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        finanzas.setForeground(new java.awt.Color(255, 255, 255));
+        finanzas.setText("Institucion");
+        finanzas.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        finanzas.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                finanzasMousePressed(evt);
+            }
+        });
+        finanzas.addActionListener(this::finanzasActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -105,9 +122,10 @@ public class PanelMenu extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(294, 294, 294)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(pacientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(profesionales, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(pacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pacientes2, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(turnos, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(finanzas, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(191, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -118,10 +136,12 @@ public class PanelMenu extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(pacientes, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pacientes1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(profesionales, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(pacientes2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addComponent(turnos, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(finanzas, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(36, 36, 36)
                 .addComponent(salir, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
@@ -143,28 +163,39 @@ public class PanelMenu extends javax.swing.JPanel {
         pacientes.setBackground(new Color(158,0,0));
     }//GEN-LAST:event_pacientesMousePressed
 
-    private void pacientes1MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pacientes1MousePressed
+    private void profesionalesMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_profesionalesMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pacientes1MousePressed
+    }//GEN-LAST:event_profesionalesMousePressed
 
-    private void pacientes1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacientes1ActionPerformed
+    private void profesionalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_profesionalesActionPerformed
         MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
         main.mostrarPanel(new ProfesionalMenu(institucion));
-    }//GEN-LAST:event_pacientes1ActionPerformed
+    }//GEN-LAST:event_profesionalesActionPerformed
 
-    private void pacientes2MousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pacientes2MousePressed
+    private void turnosMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_turnosMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pacientes2MousePressed
+    }//GEN-LAST:event_turnosMousePressed
 
-    private void pacientes2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pacientes2ActionPerformed
+    private void turnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnosActionPerformed
+        MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        main.mostrarPanel(new TurnosMenu(institucion));
+    }//GEN-LAST:event_turnosActionPerformed
+
+    private void finanzasMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_finanzasMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_pacientes2ActionPerformed
+    }//GEN-LAST:event_finanzasMousePressed
+
+    private void finanzasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_finanzasActionPerformed
+        MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        main.mostrarPanel(new InstitucionMenu(institucion));
+    }//GEN-LAST:event_finanzasActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton finanzas;
     private javax.swing.JPanel logoContainer;
     private javax.swing.JButton pacientes;
-    private javax.swing.JButton pacientes1;
-    private javax.swing.JButton pacientes2;
+    private javax.swing.JButton profesionales;
+    private javax.swing.JButton turnos;
     // End of variables declaration//GEN-END:variables
 }

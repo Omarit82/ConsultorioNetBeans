@@ -2,10 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
-package view;
+package view.profesionales;
 
 import javax.swing.SwingUtilities;
 import objetos.Institucion;
+import view.MainFrame;
+import view.PanelFondo;
+import view.PanelMenu;
 
 /**
  *
@@ -36,7 +39,6 @@ public class ProfesionalMenu extends javax.swing.JPanel {
         newProf = new javax.swing.JButton();
         searchProf = new javax.swing.JButton();
         listProf = new javax.swing.JButton();
-        editProf = new javax.swing.JButton();
 
         tituloPacientes.setFont(new java.awt.Font("Arial", 0, 36)); // NOI18N
         tituloPacientes.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -86,18 +88,6 @@ public class ProfesionalMenu extends javax.swing.JPanel {
         });
         listProf.addActionListener(this::listProfActionPerformed);
 
-        editProf.setBackground(new java.awt.Color(203, 0, 0));
-        editProf.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        editProf.setForeground(new java.awt.Color(255, 255, 255));
-        editProf.setText("Editar Profesional");
-        editProf.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        editProf.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                editProfMousePressed(evt);
-            }
-        });
-        editProf.addActionListener(this::editProfActionPerformed);
-
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -110,14 +100,15 @@ public class ProfesionalMenu extends javax.swing.JPanel {
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(289, 289, 289)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(editProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(listProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(newProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(newProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(90, 90, 90)
-                        .addComponent(backProf, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(backProf, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(288, 288, 288)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(listProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchProf, javax.swing.GroupLayout.PREFERRED_SIZE, 171, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -127,13 +118,11 @@ public class ProfesionalMenu extends javax.swing.JPanel {
                 .addComponent(tituloPacientes)
                 .addGap(46, 46, 46)
                 .addComponent(newProf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchProf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(listProf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editProf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                .addGap(30, 30, 30)
+                .addComponent(searchProf, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
                 .addComponent(backProf, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(75, 75, 75))
         );
@@ -164,7 +153,8 @@ public class ProfesionalMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_newProfMousePressed
 
     private void newProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProfActionPerformed
-        
+        MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        main.mostrarPanel(new newProfesional(institucion));
     }//GEN-LAST:event_newProfActionPerformed
 
     private void searchProfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchProfMousePressed
@@ -172,7 +162,8 @@ public class ProfesionalMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_searchProfMousePressed
 
     private void searchProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchProfActionPerformed
-        // TODO add your handling code here:
+        MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        main.mostrarPanel(new BuscarProfesional(institucion));
     }//GEN-LAST:event_searchProfActionPerformed
 
     private void listProfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listProfMousePressed
@@ -180,21 +171,13 @@ public class ProfesionalMenu extends javax.swing.JPanel {
     }//GEN-LAST:event_listProfMousePressed
 
     private void listProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listProfActionPerformed
-        // TODO add your handling code here:
+        MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        main.mostrarPanel(new ListadoProfesional(institucion));
     }//GEN-LAST:event_listProfActionPerformed
-
-    private void editProfMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editProfMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editProfMousePressed
-
-    private void editProfActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editProfActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editProfActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backProf;
-    private javax.swing.JButton editProf;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton listProf;
     private javax.swing.JButton newProf;

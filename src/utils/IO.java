@@ -2,6 +2,7 @@ package utils;
 
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 import objetos.Hora;
 
 /*CLASE UTILITARIA PARA GESTIONAR LOS INPUTS Y OUTPUS */
@@ -27,7 +28,11 @@ public class IO {
                     JOptionPane.showMessageDialog(null, "Valor ingresado no valido","Error",0);
                 }
             } catch (Exception e) {
-                JOptionPane.showMessageDialog(null,"Error en el ingreso","Error",0);
+                if(e.getMessage().equals("Cannot parse null string")){
+                    return 0;
+                }else{
+                    JOptionPane.showMessageDialog(null,"Error en el ingreso","Error",0);
+                }
             }
         } while (!condicion);
         return retorno;
@@ -56,7 +61,29 @@ public class IO {
         return retorno;
     }
 
-
+    public static int inputIntegerPositiveLimite(String titulo,String mensaje,int limite){
+        boolean condicion = false;
+        int retorno = 0;
+        do { 
+            try {
+                retorno = Integer.parseInt(JOptionPane.showInputDialog(null,mensaje,titulo,1));
+                if(retorno>0 && retorno<=limite){
+                    condicion = true;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Valor ingresado no valido","Error",0);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null,"Error en el ingreso","Error",0);
+            }
+        } while (!condicion);
+        return retorno;
+    }
+    /**
+     * Input de un boolean
+     * @param titulo
+     * @param mensaje
+     * @return el booleano ingresado
+     */
     public static boolean inputBoolean(String titulo,String mensaje){
         boolean condicion = false;
         boolean retorno = false;
@@ -102,7 +129,19 @@ public class IO {
      * @return String input
      */
     public static String inputString(String titulo, String mensaje){
-        return JOptionPane.showInputDialog(null,mensaje,titulo,1);
+        boolean condicion = false;
+        String resultado ="";
+        do {
+            resultado = JOptionPane.showInputDialog(null,mensaje,titulo,1);
+            if(resultado == null){
+                return null;
+            }else if(resultado.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Upppppsss Campo vacio!","Error",0);
+            }else{
+                condicion = true;
+            }    
+        } while (!condicion);
+        return resultado;
     }
 
      /**
@@ -127,6 +166,39 @@ public class IO {
         } while (!condicion);
         return fecha;
     }
+    /**
+     * METODO QUE GESTIONA EL INGRESO DE UN CAMPO SOLICITADO COMO SI O NO
+     * @param titulo
+     * @param mensaje
+     * @return boolean 
+     */
+    public static boolean inputCharBoolean(String titulo,String mensaje){
+        boolean condicion = false;
+        boolean resultado = false;
+        do {
+            try {
+                char res = JOptionPane.showInputDialog(null,mensaje,titulo,1).charAt(0);
+                if(res=='s'||res=='S'||res=='y'||res=='Y'){
+                    condicion=true;
+                    resultado= true;
+                }else if(res=='n'||res=='N'){
+                    condicion= true;
+                    resultado= false;
+                }else{
+                    JOptionPane.showMessageDialog(null, "Valor ingresado no valido","Upsss",0);
+                }
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error en el ingreso","Error",0);
+            }
+        } while (!condicion);
+        return resultado;
+    }
+    /**
+     * Metodo de ingreso de una hora
+     * @param titulo
+     * @param mensaje
+     * @return Hora
+     */
     public static Hora inputHora(String titulo, String mensaje){
         boolean condicion = false;
         Hora hora = Hora.H9;
@@ -183,5 +255,42 @@ public class IO {
             }
         } while (!condicion);
         return hora;
+    }
+
+    public static String editarCampoString(String texto,String valor){
+        JTextField campo = new JTextField("");
+        Placeholder.setPlaceholder(campo, texto);
+        Object[] contenido = {"Ingrese el nuevo "+valor,campo};
+        int resName = JOptionPane.showConfirmDialog(null, contenido,"Entrada",1,1);
+        String nuevo = texto;
+        if(resName == JOptionPane.OK_OPTION){
+            nuevo= campo.getText();
+        }
+        return nuevo;
+    }
+     public static int editarCampoInteger(int numero,String valor){
+        JTextField campo = new JTextField("");
+        String texto = String.valueOf(numero);
+        Placeholder.setPlaceholder(campo, texto);
+        Object[] contenido = {"Ingrese el nuevo "+valor,campo};
+        int resName = JOptionPane.showConfirmDialog(null, contenido,"Entrada",1,1);
+        int nuevo = 0;
+        if(resName == JOptionPane.OK_OPTION){
+            nuevo= Integer.parseInt(campo.getText());
+        }
+        return nuevo;
+    }
+
+    public static double editarCampoDouble(double numero,String valor){
+        JTextField campo = new JTextField("");
+        String texto = String.valueOf(numero);
+        Placeholder.setPlaceholder(campo, texto);
+        Object[] contenido = {"Ingrese el nuevo "+valor,campo};
+        int resName = JOptionPane.showConfirmDialog(null, contenido,"Entrada",1,1);
+        double nuevo = 0;
+        if(resName == JOptionPane.OK_OPTION){
+            nuevo= Double.parseDouble(campo.getText());
+        }
+        return nuevo;
     }
 }

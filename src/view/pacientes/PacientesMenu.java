@@ -1,8 +1,10 @@
-package view;
+package view.pacientes;
 
 import java.awt.Color;
 import javax.swing.SwingUtilities;
 import objetos.Institucion;
+import view.MainFrame;
+import view.PanelMenu;
 
 public class PacientesMenu extends javax.swing.JPanel {
     private Institucion inst;
@@ -26,10 +28,9 @@ public class PacientesMenu extends javax.swing.JPanel {
 
         tituloPacientes = new javax.swing.JLabel();
         backPac = new javax.swing.JButton();
-        newPac = new javax.swing.JButton();
-        searchPac = new javax.swing.JButton();
-        listPac = new javax.swing.JButton();
-        editPac = new javax.swing.JButton();
+        crear = new javax.swing.JButton();
+        buscar = new javax.swing.JButton();
+        listar = new javax.swing.JButton();
 
         setBackground(new java.awt.Color(255, 255, 255));
 
@@ -45,70 +46,58 @@ public class PacientesMenu extends javax.swing.JPanel {
         backPac.setAutoscrolls(true);
         backPac.addActionListener(this::backPacActionPerformed);
 
-        newPac.setBackground(new java.awt.Color(203, 0, 0));
-        newPac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        newPac.setForeground(new java.awt.Color(255, 255, 255));
-        newPac.setText("Nuevo Paciente");
-        newPac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        newPac.addMouseListener(new java.awt.event.MouseAdapter() {
+        crear.setBackground(new java.awt.Color(203, 0, 0));
+        crear.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        crear.setForeground(new java.awt.Color(255, 255, 255));
+        crear.setText("Nuevo Paciente");
+        crear.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        crear.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                newPacMousePressed(evt);
+                crearMousePressed(evt);
             }
         });
-        newPac.addActionListener(this::newPacActionPerformed);
+        crear.addActionListener(this::crearActionPerformed);
 
-        searchPac.setBackground(new java.awt.Color(203, 0, 0));
-        searchPac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        searchPac.setForeground(new java.awt.Color(255, 255, 255));
-        searchPac.setText("Buscar Paciente");
-        searchPac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        searchPac.addMouseListener(new java.awt.event.MouseAdapter() {
+        buscar.setBackground(new java.awt.Color(203, 0, 0));
+        buscar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        buscar.setForeground(new java.awt.Color(255, 255, 255));
+        buscar.setText("Buscar Paciente");
+        buscar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        buscar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                searchPacMousePressed(evt);
+                buscarMousePressed(evt);
             }
         });
-        searchPac.addActionListener(this::searchPacActionPerformed);
+        buscar.addActionListener(this::buscarActionPerformed);
 
-        listPac.setBackground(new java.awt.Color(203, 0, 0));
-        listPac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        listPac.setForeground(new java.awt.Color(255, 255, 255));
-        listPac.setText("Listar Pacientes");
-        listPac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        listPac.addMouseListener(new java.awt.event.MouseAdapter() {
+        listar.setBackground(new java.awt.Color(203, 0, 0));
+        listar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        listar.setForeground(new java.awt.Color(255, 255, 255));
+        listar.setText("Listar Pacientes");
+        listar.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
+        listar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                listPacMousePressed(evt);
+                listarMousePressed(evt);
             }
         });
-        listPac.addActionListener(this::listPacActionPerformed);
-
-        editPac.setBackground(new java.awt.Color(203, 0, 0));
-        editPac.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        editPac.setForeground(new java.awt.Color(255, 255, 255));
-        editPac.setText("Editar Paciente");
-        editPac.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(255, 255, 255)));
-        editPac.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                editPacMousePressed(evt);
-            }
-        });
-        editPac.addActionListener(this::editPacActionPerformed);
+        listar.addActionListener(this::listarActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tituloPacientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editPac, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(listPac, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchPac, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newPac, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(286, 286, 286))
+            .addComponent(tituloPacientes, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGap(83, 83, 83)
-                .addComponent(backPac, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(271, 271, 271)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(crear, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(listar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(68, 68, 68)
+                        .addComponent(backPac, javax.swing.GroupLayout.PREFERRED_SIZE, 95, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -116,17 +105,15 @@ public class PacientesMenu extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(48, 48, 48)
                 .addComponent(tituloPacientes)
-                .addGap(72, 72, 72)
-                .addComponent(newPac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(searchPac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(listPac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(editPac, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addGap(40, 40, 40)
+                .addComponent(crear, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(listar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(buscar, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 97, Short.MAX_VALUE)
                 .addComponent(backPac, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63))
+                .addGap(49, 49, 49))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -135,48 +122,40 @@ public class PacientesMenu extends javax.swing.JPanel {
         main.mostrarPanel(new PanelMenu(inst));
     }//GEN-LAST:event_backPacActionPerformed
 
-    private void newPacMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_newPacMousePressed
+    private void crearMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_crearMousePressed
         // TODO add your handling code here:
-        newPac.setBackground(new Color(158,0,0));
-    }//GEN-LAST:event_newPacMousePressed
+        crear.setBackground(new Color(158,0,0));
+    }//GEN-LAST:event_crearMousePressed
 
-    private void newPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newPacActionPerformed
+    private void crearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearActionPerformed
         MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
         main.mostrarPanel(new NewPaciente(inst));
-    }//GEN-LAST:event_newPacActionPerformed
+    }//GEN-LAST:event_crearActionPerformed
 
-    private void searchPacMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_searchPacMousePressed
+    private void buscarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_buscarMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchPacMousePressed
+    }//GEN-LAST:event_buscarMousePressed
 
-    private void searchPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchPacActionPerformed
+    private void buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buscarActionPerformed
+        MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
+        main.mostrarPanel(new buscarPaciente(inst));
+    }//GEN-LAST:event_buscarActionPerformed
+
+    private void listarMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listarMousePressed
         // TODO add your handling code here:
-    }//GEN-LAST:event_searchPacActionPerformed
+    }//GEN-LAST:event_listarMousePressed
 
-    private void listPacMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_listPacMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_listPacMousePressed
-
-    private void listPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listPacActionPerformed
+    private void listarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_listarActionPerformed
         MainFrame main = (MainFrame) SwingUtilities.getWindowAncestor(this);
         main.mostrarPanel(new ListPacientes(inst));
-    }//GEN-LAST:event_listPacActionPerformed
-
-    private void editPacMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_editPacMousePressed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editPacMousePressed
-
-    private void editPacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editPacActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_editPacActionPerformed
+    }//GEN-LAST:event_listarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backPac;
-    private javax.swing.JButton editPac;
-    private javax.swing.JButton listPac;
-    private javax.swing.JButton newPac;
-    private javax.swing.JButton searchPac;
+    private javax.swing.JButton buscar;
+    private javax.swing.JButton crear;
+    private javax.swing.JButton listar;
     private javax.swing.JLabel tituloPacientes;
     // End of variables declaration//GEN-END:variables
 }

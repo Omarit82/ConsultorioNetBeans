@@ -1,26 +1,21 @@
 package objetos;
 
-//CLASE PROFESIONAL QUE ES HIJA DE CLASE PERSONA
-
 import java.time.LocalDate;
 
 public class Profesional extends Persona {
-    //ATRIBUTOS PRIVADOS
+  //ATRIBUTOS PRIVADOS
     private int matricula;
-    private double sueldo;
+    private int turnosTrabajados;
 
     //CONSTRUCTOR
-    public Profesional(String id, String nombre, String apellido, String direccion, int telefono, int matricula, double sueldo) {
+    public Profesional(String id, String nombre, String apellido, String direccion, int telefono, int matricula) {
         //ID, NOMBRE, APELLIDO, DIRECCION, TELEFONO se heredan del padre PERSONA
         super(id, nombre, apellido, direccion, telefono);
         //Son particulares de Profesional
         this.matricula = matricula;
-        this.sueldo = sueldo;
+        turnosTrabajados = 0;
     }
-
-   
     //Getters & Setters
-
     //MATRICULA
     /**
      * Trae la Matricula del Profesional
@@ -36,22 +31,27 @@ public class Profesional extends Persona {
     public void setMatricula(int matricula) {
         this.matricula = matricula;
     }
+    /**
+     * Retorna la cantidad de turnos trabajados
+     * @return entero
+     */
+    public int getTurnosTrabajados() {
+        return turnosTrabajados;
+    }
+    /**
+     * Setea la cantidad de turnos trabajados
+     * @param turnosTrabajados
+     */
+    public void setTurnosTrabajados(int turnosTrabajados) {
+        this.turnosTrabajados = turnosTrabajados;
+    }
 
-    //SUELDO
     /**
-     * Trae ek Sueldo del Profesional
-     * @return
+     * Validacion que el profesional no tiene un turno a la misma hora y el mismo dia
+     * @param fecha
+     * @param hora
+     * @return boolean
      */
-    public double getSueldo() {
-        return sueldo;
-    }
-    /**
-     * Modifica el Sueldo del Profesional
-     * @param sueldo
-     */
-    public void setSueldo(double sueldo) {
-        this.sueldo = sueldo;
-    }
     public boolean validacion(LocalDate fecha, Hora hora){
         if(turnos.length == 0){
             return true;
@@ -64,19 +64,31 @@ public class Profesional extends Persona {
         }
         return true;
     }
-    
+      
+    /**
+     * Incrementa la cantidad de turnos trabajados
+     *
+     */
+    public void trabajarTurno(){
+        setTurnosTrabajados(getTurnosTrabajados()+1);
+    }
+
+    public String vistaReducida(){
+        return getApellido()+", "+getNombre()+" - "+getId()+" - "+getMatricula();
+    }
+    /**
+     * CALCULAR SUELDO
+     * @return
+     */
+        public double getSueldo(double valorTurno){
+            double sueldo = valorTurno*getTurnosTrabajados();
+            return sueldo;
+    }
+
     //Metodo Mostrar Profesional
     @Override
     public String toString() {
-        return  "PROFESIONAL\n" +
-                "-----------------------\n" +
-                "DNI: " + getId() + "\n" +
-                "Apellido: " + getApellido() + "\n" +
-                "Nombre: " + getNombre() + "\n" +
-                "Dirección: " + getDireccion() + "\n" +
-                "Teléfono: " + getTelefono() + "\n" +
-                "Matrícula: " + matricula + "\n" +
-                "Sueldo: $" + sueldo;
+        return  "PROFESIONAL\n" +super.toString()+
+                "\nMatrícula: " + matricula;
     }
-
 }

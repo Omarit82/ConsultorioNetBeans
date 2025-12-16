@@ -1,9 +1,11 @@
-package view;
+package view.pacientes;
 
 import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 import objetos.Institucion;
 import objetos.Paciente;
+import view.MainFrame;
+import view.PanelMenu;
 
 public class NewPaciente extends javax.swing.JPanel {
 
